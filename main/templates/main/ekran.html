@@ -1,0 +1,159 @@
+{% extends 'main/glavnyi.html' %}
+{%load static%}
+{% block content%}
+ <link rel="stylesheet" href="{% static 'main/css/vse.css' %}">
+ <link rel="stylesheet" href="{% static 'main/css/slider.css' %}">
+ <link rel="stylesheet" href="{% static 'main/css/movie_card.css' %}">
+<div class="container">
+    <div class="carousel">
+      {%for movie in movie_list %}
+            <div class="carousel__face"><img src={{movie.poster.url}}></div>
+       {% endfor %}
+  </div>
+</div>
+
+<div class="about"><h5>
+    Kino.ticket-уникальный сайт.Здесь вы сможете бронировать самые лучшие места в кинотеатре,так же можете купить фильм на просмотр не выходя из дома.
+  </h5></div>
+
+<div style="height:350px;"></div>
+
+<div class="cards_genre">
+  <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>Thriller</h2>
+      <div class="content">
+              {% for movie in movie_list %}
+                {% for g in movie.genres.all %}
+                    {% if g.name == 'Триллеры' %}
+          <div class="movie-div">
+               <a class="movie_card" href="{{ movie.get_absolute_url }}"
+                        style="
+                              background: url('{{ movie.poster.url }}') no-repeat center;
+                              background-size: cover;
+                            "
+                        >
+                        </a>
+                        <div class="movie-title-div">
+                           <p>{{ movie.title }}</p>
+                        </div>
+          </div>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+      </div>
+  </div>
+      <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>Horror</h2>
+      <div class="content">
+              {% for movie in movie_list %}
+                {% for g in movie.genres.all %}
+                    {% if g.name == 'Ужасы' %}
+          <div class="movie-div">
+               <a class="movie_card" href="{{ movie.get_absolute_url }}"
+                        style="
+                              background: url('{{ movie.poster.url }}') no-repeat center;
+                              background-size: cover;
+                            "
+                        >
+                        </a>
+                        <div class="movie-title-div">
+                           <p>{{ movie.title }}</p>
+                        </div>
+          </div>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+      </div>
+  </div>
+      <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>Comedy </h2>
+      <div class="content">
+              {% for movie in movie_list %}
+                {% for g in movie.genres.all %}"
+                    {% if g.name == 'Комедии' %}
+          <div class="movie-div">
+               <a class="movie_card" href="{{ movie.get_absolute_url }}"
+                        style="
+                              background: url('{{ movie.poster.url }}') no-repeat center;
+                              background-size: cover;
+                            "
+                        >
+                        </a>
+                        <div class="movie-title-div">
+                           <p>{{ movie.title }}</p>
+                        </div>
+          </div>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+      </div>
+  </div>
+
+   <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>Action</h2>
+      <div class="content">
+              {% for movie in movie_list %}
+                {% for g in movie.genres.all %}
+                    {% if g.name == 'Боевик' %}
+          <div class="movie-div">
+               <a class="movie_card" href="{{ movie.get_absolute_url }}"
+                        style="
+                              background: url('{{ movie.poster.url }}') no-repeat center;
+                              background-size: cover;
+                            "
+                        >
+                        </a>
+                        <div class="movie-title-div">
+                           <p>{{ movie.title }}</p>
+                        </div>
+          </div>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+      </div>
+  </div>
+       <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>Мелодрамы</h2>
+      <div class="content">
+              {% for movie in movie_list %}
+                {% for g in movie.genres.all %}
+                    {% if g.name == 'Мелодрамы' %}
+          <div class="movie-div">
+               <a class="movie_card" href="{{ movie.get_absolute_url }}"
+                        style="
+                              background: url('{{ movie.poster.url }}') no-repeat center;
+                              background-size: cover;
+                            "
+                        >
+                        </a>
+                        <div class="movie-title-div">
+                           <p>{{ movie.title }}</p>
+                        </div>
+          </div>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+      </div>
+  </div>
+
+    <div class="nazvanyie_genre" style="color:white; background-color: #333333;">
+      <h2>categories</h2>
+      <div class="contents">
+              {% for movie in movie_list %}
+                    {% if movie.category_id == 1 %}
+
+                          <div>
+                              {%for i in movie.genres.all %}
+                                <p style ="color:white;">{{ i.name }}</p>
+                              {% endfor %}
+                          </div>
+                {% endif %}
+          {%if 'a' in s%}
+          <p>aaaaaaaaaaa</p>
+          {%endif%}
+          {% endfor %}
+      </div>
+  </div>
+
+
+{%endblock content%}

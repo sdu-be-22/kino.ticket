@@ -1,0 +1,217 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino.ticket</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/forhead.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+{% block mainmenu %}
+    <header>
+        <div class="foto">
+            <img src="">
+            <div class="nazvaniye">
+                <p><span>KINO</span>.<span>TICKET</span></p>
+                <p>Самое интересное</p>
+            </div>
+        </div>
+        <div class="vybor">
+            <ul>
+                <a href ="{%url 'home'%}" >Home</a>
+
+                <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Movies</button>
+        <div id="myDropdown" class="dropdown-content">
+          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+          <a href="#about">Action</a>
+          <a href="#base">Comedy</a>
+          <a href="#blog">Fantasy</a>
+          <a href="#contact">Horror</a>
+          <a href="#custom">Mystery</a>
+          <a href="#support">Romancw</a>
+          <a href="#tools">Thriller</a>
+        </div>
+
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropdown");
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+
+
+    <div class = "dropp">
+
+        <button onclick="myFun()" class="dropb">Cartoons</button>
+        <div id="myDropp" class="dropp-con">
+          <input type="text" placeholder="Search.." id="myIn" onkeyup="filterFunction()">
+          <a href="#about">Educational</a>
+          <a href="#base">Anime</a>
+          <a href="#blog">Family</a>
+          <a href="#contact">All</a>
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFun() {
+          document.getElementById("myDropp").classList.toggle("showme");
+        }
+
+        function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myIn");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropp");
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+
+
+<div class = "dropit">
+
+    <button onclick="myFunk()" class="drops">Series</button>
+    <div id="myDropit" class="dropit-con">
+      <input type="text" placeholder="Search.." id="myInt" onkeyup="filterFunction()">
+      <a href="#about">New</a>
+      <a href="#base">Comedy</a>
+      <a href="#blog">Romance</a>
+      <a href="#contact">Tragedy</a>
+      <a href="#contact">Fiction</a>
+      <a href="#contact">Detective</a>
+      <a href="#contact">Epic</a>
+
+    </div>
+</div>
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunk() {
+      document.getElementById("myDropit").classList.toggle("showus");
+    }
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInt");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropit");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+
+                <a>My tickets</a>
+ <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementByClassName('dropdown-content').classList.toggle("show");
+        }
+
+        function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementByClassName('dropdown-content');
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+            </ul>
+
+        </div>
+
+        <div class="user">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-search"></i>
+            {% if request.user.is_authenticated %}
+                <span>{{ user.username }} | <a href="{% url 'logout' %}">Logout</a></span>
+            {% else %}
+                <span>
+                <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+                </span>
+            {% endif %}
+
+        </div>
+
+    </header>
+{% endblock mainmenu %}
+
+
+{%block content%}
+{%endblock content%}
+
+{% block foot %}
+    <!----------------->
+    <!---Footer-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="logopart">
+                <h1 style="color:#fe007f;">KINOWKA</h1>
+            </div>
+            <div class="socials">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-pinterest"></i>
+            </div>
+            <div class="btn4">
+                <a href="">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
+    <!--Goto button-->
+    <div class="scroll">
+        <a href=""><i class="fas fa-arrow-up"></i></a>
+    </div>
+{% endblock foot %}
+
+</body>
+</html>

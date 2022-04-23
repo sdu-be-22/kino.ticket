@@ -1,0 +1,36 @@
+{%extends 'main/glavnyi.html' %}
+{%load static%}
+{%block content%}
+    <link rel="stylesheet" href="{% static 'main/css/detail.css' %}">
+<div class="movie-card">
+  <div class="container">
+    <a href="#"><img src="{{ movie.poster.url }}" alt="cover" class="cover" /></a>
+
+    <div class="hero"
+    style="background: url('{{ movie.poster.url }}') no-repeat center; background-size: cover;"
+    >
+      <div class="details">
+        <div class="title1">{{movie.title}} </div>
+
+      </div> <!-- end details -->
+
+    </div> <!-- end hero -->
+
+    <div class="description">
+
+      <div class="column1">
+        <span class="tag">{{movie.tagline}}</span>
+
+      </div> <!-- end column1 -->
+
+      <div class="column2">
+
+          <p> {{movie.description}}</p>
+
+      </div> <!-- end column2 -->
+    </div> <!-- end description -->
+
+
+  </div> <!-- end container -->
+</div> <!-- end movie-card -->
+{% endblock %}
